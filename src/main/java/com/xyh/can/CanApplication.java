@@ -9,7 +9,6 @@ public class CanApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CanApplication.class, args);
-        System.out.println("狗毛是傻子");
     }
 
 }

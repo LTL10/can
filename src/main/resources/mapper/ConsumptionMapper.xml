@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.can.mapper.ConsumptionMapper">
+    <select id="countMoney" parameterType="Integer" resultType="Double">
+        SELECT
+            Sum(m.m_Price)
+            FROM
+            menu AS m
+            INNER JOIN diancai AS d ON m.m_Id = d.d_Menu
+            INNER JOIN consumption AS c ON c.con_OrderId = d.d_OrderId
+            GROUP BY c.con_OrderId HAVING con_OrderId=#{con_OrderId}
+    </select>
+    <select id="countConsumption" parameterType="com.xyh.can.vo.ConsumptionVo" resultType="Integer">
+        select
+            count(*)
+            from Consumption
+            <where>
+                <if test="con_Id!=null and con_Id!=''"></if>
+            </where>
+    </select>
+    <select id="ConsumptionPage" parameterType="com.xyh.can.vo.ConsumptionVo" resultType="com.xyh.can.vo.ConsumptionVo">
+        select
+        *
+        from Consumption
+        <where>
+            <if test="con_Id!=null and con_Id!=''">
+                con_Id like "%"#{con_Id}"%"
+            </if>
+            <if test="con_OrderId!=null and con_OrderId!=''">
+               and  con_OrderId like "%"#{con_OrderId}"%"
+            </if>
+        </where>
+        limit #{start},#{limit}
+    </select>
+</mapper>

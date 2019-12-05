@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.can.mapper.CanZhuoMapper">
+    <select id="CanZhuoCount" parameterType="com.xyh.can.vo.CanZhuoVo" resultType="Integer">
+        select count(*) from canzhuo
+    </select>
+    <select id="CanZhuoPage" parameterType="com.xyh.can.vo.CanZhuoVo" resultType="com.xyh.can.vo.CanZhuoVo">
+        select * from canzhuo
+        <where>
+            <if test="c_Type!=null and c_Type!=''">
+                c_Type like "%"#{c_Type}"%"
+            </if>
+        </where>
+        limit #{start},#{limit}
+    </select>
+    <update id="CanZhuoUpdate" parameterType="com.xyh.can.entity.CanZhuo" >
+        update  canzhuo set c_Start=#{c_Start} where c_Id=#{c_Id}
+    </update>
+</mapper>

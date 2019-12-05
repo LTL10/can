@@ -11,8 +11,9 @@ public class User {
     private String u_IsLockout;//Char(2) 是/否（锁 定） N 默认否
     private String u_LastLoginTime;// DataTime 最后一次登 录时间 Y
     private String u_CreateTime;// DataTime 用户创建时 间 N
-    private String u_PsdWrong;//int 密码错误次 数 N 默认 0
+    private Integer u_PsdWrong;//int 密码错误次 数 N 默认 0
     private String u_LockTime;//DataTime 被锁定时间 Y
     private String u_ProtectEMail;// Varchar(20) 密保邮箱 N
     private String u_ProtectMTel;//Varchar(11) 密保手机 N
+    private UserRoles userRoles;
 }

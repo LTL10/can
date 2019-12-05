@@ -8,6 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -19,7 +20,7 @@ public class dingdancontroller {
     @Autowired
     private dingdanservice dingdanservice;
     @ApiOperation(value = "顾客订单查询",notes = "aa")
-    @GetMapping("/getdingdan")
+    @PostMapping("/getdingdan")
     public  Map<String,Object> getdingdan(dingdanvo v){
         Map<String, Object> m=new HashMap<String, Object>();
         m.put("count",dingdanservice.getdingdancount(v));
@@ -29,7 +30,7 @@ public class dingdancontroller {
         return m;
     }
     @ApiOperation(value = "顾客订单查询后厨待制作",notes = "待制作")
-    @GetMapping("/getdingdandaizuo")
+    @PostMapping("/getdingdandaizuo")
     public  Map<String,Object> getdingdandaizuo(dingdanvo v){
         Map<String, Object> m=new HashMap<String, Object>();
         m.put("count",dingdanservice.getdingdancount(v));
@@ -39,7 +40,7 @@ public class dingdancontroller {
         return m;
     }
     @ApiOperation(value = "顾客订单查询等待服务员上菜",notes = "待上菜")
-    @GetMapping("/getdingdandaishangcai")
+    @PostMapping("/getdingdandaishangcai")
     public  Map<String,Object> getdingdandaishangcai(dingdanvo v){
         Map<String, Object> m=new HashMap<String, Object>();
         m.put("count",dingdanservice.getdingdancount(v));
@@ -49,7 +50,7 @@ public class dingdancontroller {
         return m;
     }
     @ApiOperation(value = "修改菜的状态",notes = "修改菜的状态")
-    @GetMapping("/updatestate")
+    @PostMapping("/updatestate")
     public String updatestate(DianCan d){
         int i=dingdanservice.updatestate(d);
         if(i>0){
@@ -59,7 +60,7 @@ public class dingdancontroller {
         }
     }
     @ApiOperation(value = "添加点餐信息及菜单",notes = "添加订单")
-    @GetMapping("/addordercaidan")
+    @PostMapping("/addordercaidan")
     public String addordercaidan(Order o, DianCan d){
 
         try {
@@ -72,7 +73,7 @@ public class dingdancontroller {
                      }
     }
     @ApiOperation(value = "加菜",notes = "加菜")
-    @GetMapping("/addcai")
+    @PostMapping("/addcai")
     public String  addcai(DianCan d){
 
         int i=dingdanservice.jiacai(d);

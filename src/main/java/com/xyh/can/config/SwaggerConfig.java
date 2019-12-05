@@ -29,15 +29,15 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()   // RequestHandlerSelectors 配置要扫描接口的方式
-                .apis(RequestHandlerSelectors.basePackage("com.demo.Controller")) // 指定要扫描的包
+                .apis(RequestHandlerSelectors.basePackage("com.xyh.can.controller")) // 指定要扫描的包
                 .paths(PathSelectors.any())
                 .build();
     }
 
     // 配置Swagger信息 = apiInfo
     private ApiInfo apiInfo() {
-        Contact contact = new Contact("玩一玩","https://www.baidu.com/","3067063725@qq.com");
-        return new ApiInfo("wms系统的接口文档",
+        Contact contact = new Contact("夕阳红团队","https://www.baidu.com/","3067063725@qq.com");
+        return new ApiInfo("夕阳红系统的接口文档",
                 "good good study, day day up",
                 "1.0",
                 "urn:tos",

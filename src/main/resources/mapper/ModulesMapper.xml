@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.can.mapper.ModulesMapper">
+    <select id="fingpage" parameterType="com.xyh.can.vo.ModulesVo" resultType="com.xyh.can.entity.Modules" >
+        select * from modules
+        <where>
+            <if test="mname!=null">
+                and m_Name like "%"#{mname}"%"
+            </if>
+        </where>
+        limit #{start},#{limit}
+    </select>
+    <select id="Count" parameterType="com.xyh.can.vo.ModulesVo" resultType="Integer" >
+        SELECT count(*) from
+        modules
+        <where>
+            <if test="mname!=null">
+                and m_Name like "%"#{mname}"%"
+            </if>
+        </where>
+    </select>
+    <insert id="addModules" parameterType="com.xyh.can.entity.Modules" >
+        INSERT INTO `dingdan`.`modules`( `m_Name`, `m_ParentId`, `m_Path`, `m_Weight`) VALUES
+        (#{m_Name},#{m_ParentId},#{m_Path},#{m_Weight})
+    </insert>
+    <update id="updateModules" parameterType="com.xyh.can.entity.Roles" >
+UPDATE `dingdan`.`modules` SET `m_Name` = #{m_Name}, `m_ParentId` = #{m_ParentId},
+`m_Path` =#{m_Path}, `m_Weight` = #{m_Weight}  WHERE `m_Id` = #{m_Id};
+    </update>
+    <delete id="delModules" parameterType="Integer" >
+        delete Modules where m_Id=#{m_id}
+    </delete>
+</mapper>

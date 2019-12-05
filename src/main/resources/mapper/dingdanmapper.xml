@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.can.mapper.dingdanmapper">
+    <select id="getdingdan" resultType="java.util.Map" parameterType="com.xyh.can.entity.dingdanvo">
+        SELECT a.o_Id,a.o_CreateTime,c.c_Type,a.d_State,m.m_Name,m.m_Photo,m.m_Price from (SELECT *  FROM `order` o,diancan d WHERE o.o_Id=d.d_OrderId) a ,menu m,canzhuo c
+        <where>
+             a.d_Menu=m.m_Id and c.c_Id=a.o_CanZhuo
+            <if test="m_Name!=null and m_Name!=''">
+               and m.m_Name like "%"#{m_Name}"%"
+
+            </if>
+        </where>
+        limit #{start},#{limit}
+    </select>
+<select id="getdingdancount" resultType="int" parameterType="com.xyh.can.entity.dingdanvo">
+    SELECT count(*) from (SELECT *  FROM `order` o,diancan d WHERE o.o_Id=d.d_OrderId) a ,menu m
+    <where>
+        a.d_Menu=m.m_Id
+        <if test="m_Name!=null and m_Name!=''">
+            and m.m_Name like "%"#{m_Name}"%"
+
+        </if>
+    </where>
+</select>
+    <update id="updatestate" parameterType="com.xyh.can.entity.DianCan">
+UPDATE  diancan d set d.d_State=#{d_State} WHERE d.d_Menu=#{d_Menu}
+
+    </update>
+    <insert id="addOrder" parameterType="com.xyh.can.entity.Order">
+INSERT INTO `order` (o_CanZhuo,o_UserId) VALUES (#{o_CanZhuo},#{o_UserId})
+    </insert>
+    <insert id="addDianCan" parameterType="com.xyh.can.entity.DianCan">
+INSERT INTO diancan (d_Menu,d_OrderId,d_State) VALUES (#{d_Menu},#{d_OrderId},#{d_State})
+    </insert>
+    <insert id="jiacai" parameterType="com.xyh.can.entity.DianCan">
+INSERT INTO diancan (d_Menu,d_OrderId,d_State) VALUES (#{d_Menu},#{d_OrderId},#{d_State})
+    </insert>
+    <select id="getdingdandaizuo"  resultType="java.util.Map" parameterType="com.xyh.can.entity.dingdanvo">
+        SELECT a.o_Id,a.o_CreateTime,c.c_Type,a.d_State,m.m_Name,m.m_Photo,m.m_Price from (SELECT *  FROM `order` o,diancan d WHERE o.o_Id=d.d_OrderId) a ,menu m,canzhuo c
+        <where>
+            a.d_Menu=m.m_Id and c.c_Id=a.o_CanZhuo and a.d_State='待做'
+            <if test="m_Name!=null and m_Name!=''">
+                and m.m_Name like "%"#{m_Name}"%"
+
+            </if>
+        </where>
+        limit #{start},#{limit}
+    </select>
+    <select id="getdingdandaishangcai"  resultType="java.util.Map" parameterType="com.xyh.can.entity.dingdanvo">
+        SELECT a.o_Id,a.o_CreateTime,c.c_Type,a.d_State,m.m_Name,m.m_Photo,m.m_Price from (SELECT *  FROM `order` o,diancan d WHERE o.o_Id=d.d_OrderId) a ,menu m,canzhuo c
+        <where>
+            a.d_Menu=m.m_Id and c.c_Id=a.o_CanZhuo and a.d_State='待上菜'
+            <if test="m_Name!=null and m_Name!=''">
+                and m.m_Name like "%"#{m_Name}"%"
+
+            </if>
+        </where>
+        limit #{start},#{limit}
+    </select>
+</mapper>

@@ -36,7 +36,7 @@ public class SwaggerConfig {
 
     // 配置Swagger信息 = apiInfo
     private ApiInfo apiInfo() {
-        Contact contact = new Contact("夕阳红","https://www.baidu.com/","3067063725@qq.com");
+        Contact contact = new Contact("夕阳红团队","https://www.baidu.com/","3067063725@qq.com");
         return new ApiInfo("夕阳红系统的接口文档",
                 "good good study, day day up",
                 "1.0",

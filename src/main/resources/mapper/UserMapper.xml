@@ -3,7 +3,84 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xyh.can.mapper.UserMapper">
- <select id="fingpage"  resultType="com.xyh.can.entity.User" >
-select * from user
+ <resultMap id="userMap" type="com.xyh.can.entity.User">
+  <id property="u_Id" column="u_Id" ></id>
+  <result property="u_Name" column="u_Name"></result>
+  <result property="u_Password" column="u_Password"></result>
+  <result property="u_Zsname" column="u_Zsname"></result>
+  <result property="u_IsLockout" column="u_IsLockout"></result>
+  <result property="u_LastLoginTime" column="u_LastLoginTime"></result>
+  <result property="u_CreateTime" column="u_CreateTime"></result>
+  <result property="u_PsdWrong" column="u_PsdWrong"></result>
+  <result property="u_LockTime" column="u_LockTime"></result>
+  <result property="u_ProtectEMail" column="u_ProtectEMail"></result>
+  <result property="u_ProtectMTel" column="u_ProtectMTel"></result>
+  <association property="userRoles" javaType="com.xyh.can.entity.UserRoles">
+   <id property="id" column="id" ></id>
+   <result property="userId" column="userId" ></result>
+   <result property="rolesId" column="rolesId" ></result>
+   <association property="roles" javaType="com.xyh.can.entity.Roles" >
+    <id property="r_Id" column="r_Id" ></id>
+    <result property="r_Name" column="r_Name" ></result>
+    <result property="r_Weight" column="r_Weight" ></result>
+   </association>
+  </association>
+
+ </resultMap>
+ <select id="fingpage" parameterType="com.xyh.can.vo.UserVo" resultMap="userMap" >
+  SELECT *
+  FROM
+  `user` AS u
+  INNER JOIN (userroles AS us INNER JOIN roles AS r ON us.rolesId = r.r_Id) ON u.u_Id = us.userId
+  <where>
+   <if test="zsname!=null">
+    u.u_Zsname like "%"#{zsname}"%"
+   </if>
+   <if test="isLockout!=null">
+    and u.u_IsLockout = #{isLockout}
+   </if>
+   <if test="protectEMail!=null">
+    and u.u_ProtectEMail = #{protectEMail}
+   </if>
+   <if test="protectMTel!=null">
+    and  u.u_ProtectMTel like "%"#{protectMTel}"%"
+   </if>
+
+  </where>
+  limit #{start},#{limit}
  </select>
+ <select id="Count" parameterType="com.xyh.can.vo.UserVo" resultType="Integer" >
+  SELECT count(*)
+  FROM
+  `user` AS u
+  INNER JOIN (userroles AS us INNER JOIN roles AS r ON us.rolesId = r.r_Id) ON u.u_Id = us.userId
+  <where>
+   <if test="zsname!=null">
+    u.u_Zsname like "%"#{zsname}"%"
+   </if>
+   <if test="isLockout!=null">
+    and u.u_IsLockout = #{isLockout}
+   </if>
+   <if test="protectEMail!=null">
+    and u.u_ProtectEMail = #{protectEMail}
+   </if>
+   <if test="protectMTel!=null">
+    and  u.u_ProtectMTel like "%"#{protectMTel}"%"
+   </if>
+
+  </where>
+ </select>
+ <insert id="addUser" parameterType="com.xyh.can.entity.User" >
+        INSERT INTO `user`( `u_Name`, `u_Password`, `u_Zsname`, `u_IsLockout`,   `u_ProtectEMail`, `u_ProtectMTel`)
+        VALUES (#{u_Name},#{u_Password},#{u_Zsname},#{u_IsLockout},#{u_ProtectEMail},#{u_ProtectMTel})
+    </insert>
+ <update id="updateUer" parameterType="com.xyh.can.entity.User" >
+        UPDATE `dingdan`.`user` SET `u_Name` = #{u_Name}, `u_Password` = #{u_Password},
+        `u_Zsname` = #{u_Zsname}, `u_IsLockout` = #{u_IsLockout},
+        `u_ProtectEMail` = #{u_ProtectEMail},
+        `u_ProtectMTel` = #{u_ProtectMTel} WHERE `u_Id` = #{u_Id};
+    </update>
+ <delete id="delUser" parameterType="Integer" >
+        delete user where u_Id=#{u_id}
+    </delete>
 </mapper>

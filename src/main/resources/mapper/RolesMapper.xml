@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.can.mapper.RolesMapper">
+    <select id="fingpage" parameterType="com.xyh.can.vo.RolesVo" resultType="com.xyh.can.entity.Roles" >
+    select * from roles
+    <where>
+        <if test="rname!=null">
+            and r_Name like "%"#{rname}"%"
+        </if>
+    </where>
+    limit #{start},#{limit}
+    </select>
+    <select id="Count" parameterType="com.xyh.can.vo.RolesVo" resultType="Integer" >
+        SELECT count(*)
+        from roles
+        <where>
+            <if test="rname!=null">
+                and r_Name like "%"#{rname}"%"
+            </if>
+        </where>
+    </select>
+    <insert id="addRoles" parameterType="com.xyh.can.entity.Roles" >
+        INSERT INTO `dingdan`.`roles`( `r_Name`, `r_Weight`) VALUES (#{r_Name},#{r_Weight})
+    </insert>
+    <update id="updateRoles" parameterType="com.xyh.can.entity.Roles" >
+ UPDATE `dingdan`.`roles` SET `r_Name` = #{r_Name}, `r_Weight` = #{r_Weight} WHERE `r_Id` = #{r_Id};
+    </update>
+    <delete id="delRoles" parameterType="Integer" >
+        delete roles where r_Id=#{r_id}
+    </delete>
+</mapper>

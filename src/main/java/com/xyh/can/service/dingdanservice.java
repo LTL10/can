@@ -15,5 +15,9 @@ public interface dingdanservice {
     int jiacai(DianCan d);
     List<Map> getdingdandaizuo(dingdanvo v);
     List<Map> getdingdandaishangcai(dingdanvo v);//待上菜单
+    List<Map> getweishangcai(dingdanvo v);
+    int getdingdandaizuocount(dingdanvo v);
+    int getdingdandaishangcaicount(dingdanvo v);
+    int getweishangcaicount(dingdanvo v);
 
 }

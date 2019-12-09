@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Map;
 @Service
 public class dingdanserviceimpl implements dingdanservice {
-@Autowired
-private dingdanmapper dingdanmapper;
+    @Autowired
+    private dingdanmapper dingdanmapper;
     @Override
     public List<Map> getdingdan(dingdanvo v) {
         return dingdanmapper.getdingdan(v);
@@ -50,6 +50,26 @@ private dingdanmapper dingdanmapper;
     @Override
     public List<Map> getdingdandaishangcai(dingdanvo v) {
         return dingdanmapper.getdingdandaishangcai(v);
+    }
+
+    @Override
+    public List<Map> getweishangcai(dingdanvo v) {
+        return dingdanmapper.getweishangcai(v);
+    }
+
+    @Override
+    public int getdingdandaizuocount(dingdanvo v) {
+        return dingdanmapper.getdingdandaizuocount(v);
+    }
+
+    @Override
+    public int getdingdandaishangcaicount(dingdanvo v) {
+        return dingdanmapper.getdingdandaishangcaicount(v);
+    }
+
+    @Override
+    public int getweishangcaicount(dingdanvo v) {
+        return dingdanmapper.getweishangcaicount(v);
     }
 
 

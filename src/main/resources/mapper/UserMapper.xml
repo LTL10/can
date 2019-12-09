@@ -31,16 +31,16 @@
   SELECT *
   FROM
   `user` AS u
-  INNER JOIN (userroles AS us INNER JOIN roles AS r ON us.rolesId = r.r_Id) ON u.u_Id = us.userId
+  left JOIN (userroles AS us INNER JOIN roles AS r ON us.rolesId = r.r_Id) ON u.u_Id = us.userId
   <where>
    <if test="zsname!=null">
     u.u_Zsname like "%"#{zsname}"%"
    </if>
-   <if test="isLockout!=null">
+    <if test="isLockout!=''">
     and u.u_IsLockout = #{isLockout}
    </if>
    <if test="protectEMail!=null">
-    and u.u_ProtectEMail = #{protectEMail}
+    and u.u_ProtectEMail like "%"#{protectEMail}"%"
    </if>
    <if test="protectMTel!=null">
     and  u.u_ProtectMTel like "%"#{protectMTel}"%"
@@ -53,16 +53,16 @@
   SELECT count(*)
   FROM
   `user` AS u
-  INNER JOIN (userroles AS us INNER JOIN roles AS r ON us.rolesId = r.r_Id) ON u.u_Id = us.userId
+  left JOIN (userroles AS us INNER JOIN roles AS r ON us.rolesId = r.r_Id) ON u.u_Id = us.userId
   <where>
    <if test="zsname!=null">
     u.u_Zsname like "%"#{zsname}"%"
    </if>
-   <if test="isLockout!=null">
+   <if test="isLockout!=''">
     and u.u_IsLockout = #{isLockout}
    </if>
    <if test="protectEMail!=null">
-    and u.u_ProtectEMail = #{protectEMail}
+    and u.u_ProtectEMail like "%"#{protectEMail}"%"
    </if>
    <if test="protectMTel!=null">
     and  u.u_ProtectMTel like "%"#{protectMTel}"%"

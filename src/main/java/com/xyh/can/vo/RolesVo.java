@@ -31,7 +31,7 @@ public class RolesVo {
     public void setLimit(int limit) {
         this.limit = limit;
     }
-    public int getStart(int page){
+    public int getStart(){
         return  (page-1)*limit;
     }
 }

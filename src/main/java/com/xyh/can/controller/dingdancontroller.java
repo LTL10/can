@@ -7,7 +7,6 @@ import com.xyh.can.service.dingdanservice;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,7 +32,7 @@ public class dingdancontroller {
     @PostMapping("/getdingdandaizuo")
     public  Map<String,Object> getdingdandaizuo(dingdanvo v){
         Map<String, Object> m=new HashMap<String, Object>();
-        m.put("count",dingdanservice.getdingdancount(v));
+        m.put("count",dingdanservice.getdingdandaizuocount(v));
         m.put("data",dingdanservice.getdingdandaizuo(v));
         m.put("code",0);
         m.put("msg","");
@@ -43,8 +42,18 @@ public class dingdancontroller {
     @PostMapping("/getdingdandaishangcai")
     public  Map<String,Object> getdingdandaishangcai(dingdanvo v){
         Map<String, Object> m=new HashMap<String, Object>();
-        m.put("count",dingdanservice.getdingdancount(v));
+        m.put("count",dingdanservice.getdingdandaishangcaicount(v));
         m.put("data",dingdanservice.getdingdandaishangcai(v));
+        m.put("code",0);
+        m.put("msg","");
+        return m;
+    }
+    @ApiOperation(value = "顾客订单查询服务员未上菜",notes = "待上菜")
+    @PostMapping("/getweishangcai")
+    public  Map<String,Object> getweishangcai(dingdanvo v){
+        Map<String, Object> m=new HashMap<String, Object>();
+        m.put("count",dingdanservice.getweishangcaicount(v));
+        m.put("data",dingdanservice.getweishangcai(v));
         m.put("code",0);
         m.put("msg","");
         return m;

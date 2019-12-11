@@ -11,4 +11,5 @@ public interface RolesService {
     public Integer addRoles(Roles roles);//添加角色
     public Integer updateRoles(Roles roles);//修改角色
     public Integer delRoles(Integer r_id);//删除角色
+    public List<Roles> getRolesAll();//获取所有角色返回角色集合
 }

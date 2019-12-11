@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -56,5 +57,10 @@ public class RolesController {
             return true;
         }
         return  false;
+    }
+    @ApiOperation( value = "所有角色信息",notes = "获取所有角色")
+    @PostMapping("/RolesAll")
+    public List<Roles> RolesAll(){
+        return  rolesService.getRolesAll();
     }
 }

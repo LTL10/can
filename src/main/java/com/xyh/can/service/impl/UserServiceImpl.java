@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService {
     public Integer delUser(Integer u_id) {
         return userMapper.delUser(u_id);
     }
+
+    @Override
+    public Integer addUserRoles(Integer u_Id, Integer r_Id) {
+        return userMapper.addUserRoles(u_Id,r_Id);
+    }
 }

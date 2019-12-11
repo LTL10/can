@@ -36,4 +36,9 @@ public class RolesServiceImpl implements RolesService {
     public Integer delRoles(Integer r_id) {
         return rolesMapper.delRoles(r_id);
     }
+
+    @Override
+    public List<Roles> getRolesAll() {
+        return rolesMapper.getRolesAll();
+    }
 }

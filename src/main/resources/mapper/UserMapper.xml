@@ -74,13 +74,16 @@
         INSERT INTO `user`( `u_Name`, `u_Password`, `u_Zsname`, `u_IsLockout`,   `u_ProtectEMail`, `u_ProtectMTel`)
         VALUES (#{u_Name},#{u_Password},#{u_Zsname},#{u_IsLockout},#{u_ProtectEMail},#{u_ProtectMTel})
     </insert>
- <update id="updateUer" parameterType="com.xyh.can.entity.User" >
+ <update id="updateUSer" parameterType="com.xyh.can.entity.User" >
         UPDATE `dingdan`.`user` SET `u_Name` = #{u_Name}, `u_Password` = #{u_Password},
         `u_Zsname` = #{u_Zsname}, `u_IsLockout` = #{u_IsLockout},
         `u_ProtectEMail` = #{u_ProtectEMail},
         `u_ProtectMTel` = #{u_ProtectMTel} WHERE `u_Id` = #{u_Id};
     </update>
  <delete id="delUser" parameterType="Integer" >
-        delete user where u_Id=#{u_id}
+        delete from user where u_Id=#{u_id}
     </delete>
+    <insert id="addUserRoles" parameterType="Integer" >
+        insert into userroles (userId,rolesId) values (#{u_Id},#{r_Id})
+    </insert>
 </mapper>

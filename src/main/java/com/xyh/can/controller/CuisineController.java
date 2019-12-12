@@ -6,7 +6,6 @@ import com.xyh.can.util.CuisineVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +30,7 @@ public class CuisineController {
       @ApiOperation(value = "菜系表添加",notes = "菜系表根据主键id递增添加")
       @PostMapping("/Ctianjia")
      public boolean add(Cuisine cuisine){
-          int num=cuisineService.Cadd(cuisine);
+          int num=cuisineService.Cadd(cuisine);//1
           if (num>0){
               return true;
           }

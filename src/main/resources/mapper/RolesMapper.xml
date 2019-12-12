@@ -30,4 +30,7 @@
     <delete id="delRoles" parameterType="Integer" >
         delete roles where r_Id=#{r_id}
     </delete>
+    <select id="getRolesAll" resultType="com.xyh.can.entity.Roles">
+       select * from roles
+    </select>
 </mapper>

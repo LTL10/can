@@ -11,4 +11,5 @@ public interface UserMapper {
     public Integer addUser(User user);//添加用户
     public Integer updateUSer(User user);//修改用户
     public Integer delUser(Integer u_id);//删除用户
+    public Integer addUserRoles(Integer u_Id,Integer r_Id);//用户赋予角色
 }

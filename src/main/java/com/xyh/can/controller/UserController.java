@@ -31,6 +31,7 @@ public class UserController {
     @ApiOperation( value = "添加用户",notes = "根据用户常用信息添加用户")
     @PostMapping("/tianjia")
     public boolean addUser(User user){
+
         int num= userService.addUser(user);
         if (num>0){
             return true;
@@ -50,6 +51,15 @@ public class UserController {
     @PostMapping("/shanchu")
     public boolean delUser(Integer u_Id){
         int num= userService.delUser(u_Id);
+        if (num>0){
+            return true;
+        }
+        return  false;
+    }
+    @ApiOperation( value = "用户赋予角色",notes = "根据用户Id赋予用户角色")
+    @PostMapping("/addUserRelos")
+    public boolean addUserRelos(Integer u_Id,Integer r_Id){
+        int num= userService.addUserRoles(u_Id,r_Id);
         if (num>0){
             return true;
         }

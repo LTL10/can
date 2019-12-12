@@ -5,9 +5,7 @@ import com.xyh.can.service.MenuService;
 import com.xyh.can.util.MenuVo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -19,7 +17,7 @@ public class MenuController {
     private MenuService menuService;
      @ApiOperation(value = "菜单和菜系的联合表的分页",notes ="根据")
 
-     @GetMapping("/menu")
+     @PostMapping("/menu")
 public Map<String,Object> getall(MenuVo menuVo){
     Map<String,Object> map=new HashMap<String,Object>();
     map.put("data",menuService.fingpage(menuVo));
@@ -28,7 +26,7 @@ public Map<String,Object> getall(MenuVo menuVo){
     map.put("count",menuService.count());
     return  map;
  }
- @RequestMapping("/update")
+ @PostMapping("/update")
  public  boolean update(Menu menu){
          int num=menuService.update(menu);
          if(num>0){
@@ -36,7 +34,7 @@ public Map<String,Object> getall(MenuVo menuVo){
          }
          return false;
  }
-@RequestMapping("/detele")
+@PostMapping("/detele")
     public  boolean delete(int id){
          int num=menuService.delete(id);
     if(num>0){
@@ -44,7 +42,7 @@ public Map<String,Object> getall(MenuVo menuVo){
     }
     return false;
 }
-@RequestMapping("/insert")
+@PostMapping("/insert")
 public  boolean insert(Menu menu){
          int num=menuService.add(menu);
     if(num>0){
@@ -53,7 +51,7 @@ public  boolean insert(Menu menu){
     return false;
 
 }
-@RequestMapping("/deteleone")
+@PostMapping("/deteleone")
 public boolean deteleone(int tid){
          int num=menuService.deleteone(tid);
     if(num>0){

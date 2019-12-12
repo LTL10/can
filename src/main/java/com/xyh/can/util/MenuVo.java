@@ -4,10 +4,19 @@ import com.xyh.can.entity.Menu;
 
 public class MenuVo extends Menu {
     private int page = 1;
-    private int rows = 10;
+    private int limit = 10;
     private int start;
     private double min;
     private  double max;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setStart(int start) {
+        this.start = start;
+    }
 
     public double getMin() {
         return min;
@@ -33,15 +42,27 @@ public class MenuVo extends Menu {
         this.page = page;
     }
 
-    public int getRows() {
-        return rows;
+    public int getLimit() {
+        return limit;
     }
 
-    public void setRows(int rows) {
-        this.rows = rows;
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
+    @Override
+    public String toString() {
+        return "MenuVo{" +
+                "page=" + page +
+                ", limit=" + limit +
+                ", start=" + start +
+                ", min=" + min +
+                ", max=" + max +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     public int getStart() {
-        return (page - 1) * rows;
+        return (page - 1) * limit;
     }
 }

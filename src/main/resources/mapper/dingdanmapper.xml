@@ -15,6 +15,12 @@
                 and a.d_State = #{d_State}
 
             </if>
+            <if test="time1!=null and time1!=''">
+                and o_CreateTime &gt;=#{time1}
+            </if>
+            <if test="time2!=null and time2!=''">
+                and o_CreateTime &lt;=#{time2}
+            </if>
         </where>
         limit #{start},#{limit}
     </select>
@@ -29,6 +35,12 @@
         <if test="d_State!=null and d_State!=''">
             and a.d_State = #{d_State}
 
+        </if>
+        <if test="time1!=null and time1!=''">
+            and o_CreateTime &gt;=#{time1}
+        </if>
+        <if test="time2!=null and time2!=''">
+            and o_CreateTime &lt;=#{time2}
         </if>
     </where>
 </select>
@@ -49,7 +61,7 @@ INSERT INTO diancan (d_Menu,d_OrderId,d_State) VALUES (#{d_Menu},#{d_OrderId},#{
     <select id="getdingdandaizuo"  resultType="java.util.Map" parameterType="com.xyh.can.entity.dingdanvo">
         SELECT a.o_Id,a.o_CreateTime,c.c_Type,a.d_State,m.m_Name,a.d_Id,m.m_Photo,m.m_Price from (SELECT *  FROM `order` o,diancan d WHERE o.o_Id=d.d_OrderId) a ,menu m,canzhuo c
         <where>
-            a.d_Menu=m.m_Id and c.c_Id=a.o_CanZhuo and a.d_State !='未上菜'
+            a.d_Menu=m.m_Id and c.c_Id=a.o_CanZhuo and a.d_State !='未上菜' and a.d_State !='待做'
             <if test="m_Name!=null and m_Name!=''">
                 and m.m_Name like "%"#{m_Name}"%"
 
@@ -57,6 +69,12 @@ INSERT INTO diancan (d_Menu,d_OrderId,d_State) VALUES (#{d_Menu},#{d_OrderId},#{
             <if test="d_State!=null and d_State!=''">
                 and a.d_State = #{d_State}
 
+            </if>
+            <if test="time1!=null and time1!=''">
+                and o_CreateTime &gt;=#{time1}
+            </if>
+            <if test="time2!=null and time2!=''">
+                and o_CreateTime &lt;=#{time2}
             </if>
         </where>
         limit #{start},#{limit}
@@ -73,6 +91,12 @@ INSERT INTO diancan (d_Menu,d_OrderId,d_State) VALUES (#{d_Menu},#{d_OrderId},#{
                 and a.d_State = #{d_State}
 
             </if>
+            <if test="time1!=null and time1!=''">
+                and o_CreateTime &gt;=#{time1}
+            </if>
+            <if test="time2!=null and time2!=''">
+                and o_CreateTime &lt;=#{time2}
+            </if>
         </where>
 
     </select>
@@ -81,7 +105,7 @@ INSERT INTO diancan (d_Menu,d_OrderId,d_State) VALUES (#{d_Menu},#{d_OrderId},#{
     <select id="getdingdandaishangcai"  resultType="java.util.Map" parameterType="com.xyh.can.entity.dingdanvo">
         SELECT a.o_Id,a.o_CreateTime,c.c_Type,a.d_State,m.m_Name,a.d_Id,m.m_Photo,m.m_Price from (SELECT *  FROM `order` o,diancan d WHERE o.o_Id=d.d_OrderId) a ,menu m,canzhuo c
         <where>
-            a.d_Menu=m.m_Id and c.c_Id=a.o_CanZhuo  and a.d_State !='待上菜' and a.d_State !='未上菜'
+            a.d_Menu=m.m_Id and c.c_Id=a.o_CanZhuo  and a.d_State !='待上菜' and a.d_State !='未上菜' and a.d_State!='待做'
             <if test="m_Name!=null and m_Name!=''">
                 and m.m_Name like "%"#{m_Name}"%"
 
@@ -89,6 +113,12 @@ INSERT INTO diancan (d_Menu,d_OrderId,d_State) VALUES (#{d_Menu},#{d_OrderId},#{
             <if test="d_State!=null and d_State!=''">
                 and a.d_State = #{d_State}
 
+            </if>
+            <if test="time1!=null and time1!=''">
+                and o_CreateTime &gt;=#{time1}
+            </if>
+            <if test="time2!=null and time2!=''">
+                and o_CreateTime &lt;=#{time2}
             </if>
         </where>
         limit #{start},#{limit}
@@ -96,7 +126,7 @@ INSERT INTO diancan (d_Menu,d_OrderId,d_State) VALUES (#{d_Menu},#{d_OrderId},#{
     <select id="getdingdandaishangcaicount" parameterType="com.xyh.can.entity.dingdanvo" resultType="int">
         SELECT count(*) from (SELECT *  FROM `order` o,diancan d WHERE o.o_Id=d.d_OrderId) a ,menu m,canzhuo c
         <where>
-            a.d_Menu=m.m_Id and c.c_Id=a.o_CanZhuo and a.d_State !='待上菜' and a.d_State !='未上菜'
+            a.d_Menu=m.m_Id and c.c_Id=a.o_CanZhuo and a.d_State !='待上菜' and a.d_State !='未上菜' and a.d_State!='待做'
             <if test="m_Name!=null and m_Name!=''">
                 and m.m_Name like "%"#{m_Name}"%"
 
@@ -104,6 +134,12 @@ INSERT INTO diancan (d_Menu,d_OrderId,d_State) VALUES (#{d_Menu},#{d_OrderId},#{
             <if test="d_State!=null and d_State!=''">
                 and a.d_State = #{d_State}
 
+            </if>
+            <if test="time1!=null and time1!=''">
+                and o_CreateTime &gt;=#{time1}
+            </if>
+            <if test="time2!=null and time2!=''">
+                and o_CreateTime &lt;=#{time2}
             </if>
         </where>
 
@@ -121,6 +157,12 @@ INSERT INTO diancan (d_Menu,d_OrderId,d_State) VALUES (#{d_Menu},#{d_OrderId},#{
                 and a.d_State = #{d_State}
 
             </if>
+            <if test="time1!=null and time1!=''">
+                and o_CreateTime &gt;=#{time1}
+            </if>
+            <if test="time2!=null and time2!=''">
+                and o_CreateTime &lt;=#{time2}
+            </if>
         </where>
         limit #{start},#{limit}
     </select>
@@ -136,7 +178,19 @@ INSERT INTO diancan (d_Menu,d_OrderId,d_State) VALUES (#{d_Menu},#{d_OrderId},#{
                 and a.d_State = #{d_State}
 
             </if>
+            <if test="time1!=null and time1!=''">
+                and o_CreateTime &gt;=#{time1}
+            </if>
+            <if test="time2!=null and time2!=''">
+                and o_CreateTime &lt;=#{time2}
+            </if>
         </where>
 
     </select>
+    <delete id="deldingdan" parameterType="com.xyh.can.entity.DianCan">
+DELETE FROM diancan WHERE d_Id=#{d_Id}
+
+
+    </delete>
+
 </mapper>

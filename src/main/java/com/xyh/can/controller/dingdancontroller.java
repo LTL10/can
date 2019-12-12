@@ -19,13 +19,15 @@ public class dingdancontroller {
     @Autowired
     private dingdanservice dingdanservice;
     @ApiOperation(value = "顾客订单查询",notes = "aa")
-    @PostMapping("/getdingdan")
+
+   @PostMapping("/getdingdan")
     public  Map<String,Object> getdingdan(dingdanvo v){
         Map<String, Object> m=new HashMap<String, Object>();
         m.put("count",dingdanservice.getdingdancount(v));
         m.put("data",dingdanservice.getdingdan(v));
         m.put("code",0);
         m.put("msg","");
+        System.out.println(m);
         return m;
     }
     @ApiOperation(value = "顾客订单查询后厨待制作",notes = "待制作")
@@ -62,6 +64,16 @@ public class dingdancontroller {
     @PostMapping("/updatestate")
     public String updatestate(DianCan d){
         int i=dingdanservice.updatestate(d);
+        if(i>0){
+            return "成功";
+        }else{
+            return "失败";
+        }
+    }
+    @ApiOperation(value = "删除订单",notes = "删除")
+    @PostMapping("/deldingdan")
+    public String deldingdan(DianCan d){
+        int i=dingdanservice.deldingdan(d);
         if(i>0){
             return "成功";
         }else{

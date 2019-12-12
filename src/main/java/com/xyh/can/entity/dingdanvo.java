@@ -1,14 +1,29 @@
 package com.xyh.can.entity;
 
-import lombok.Data;
-
-
 public class dingdanvo {
     private Integer page=1;
     private Integer limit=4;
     private Integer start;
     private String  m_Name;
     private String  d_State;
+    private String time1;
+    private String time2;
+
+    public String getTime1() {
+        return time1;
+    }
+
+    public String getTime2() {
+        return time2;
+    }
+
+    public void setTime1(String time1) {
+        this.time1 = time1;
+    }
+
+    public void setTime2(String time2) {
+        this.time2 = time2;
+    }
 
     public Integer getPage() {
         return page;
@@ -58,6 +73,8 @@ public class dingdanvo {
                 ", start=" + start +
                 ", m_Name='" + m_Name + '\'' +
                 ", d_State='" + d_State + '\'' +
+                ", time1='" + time1 + '\'' +
+                ", time2='" + time2 + '\'' +
                 '}';
     }
 }

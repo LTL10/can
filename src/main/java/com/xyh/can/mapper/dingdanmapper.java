@@ -20,4 +20,5 @@ public interface dingdanmapper {
     int getdingdandaishangcaicount(dingdanvo v);
     List<Map> getweishangcai(dingdanvo v);
     int getweishangcaicount(dingdanvo v);
+    int deldingdan(DianCan d);
 }

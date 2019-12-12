@@ -72,5 +72,10 @@ public class dingdanserviceimpl implements dingdanservice {
         return dingdanmapper.getweishangcaicount(v);
     }
 
+    @Override
+    public int deldingdan(DianCan d) {
+        return dingdanmapper.deldingdan(d);
+    }
+
 
 }

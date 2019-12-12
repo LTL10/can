@@ -19,5 +19,6 @@ public interface dingdanservice {
     int getdingdandaizuocount(dingdanvo v);
     int getdingdandaishangcaicount(dingdanvo v);
     int getweishangcaicount(dingdanvo v);
+    int deldingdan(DianCan d);
 
 }

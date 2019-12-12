@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xyh.can.mapper.MenuMapper">
  <select id="fingpage"  parameterType="com.xyh.can.util.MenuVo" resultType="com.xyh.can.util.MenuVo" >
-   SELECT c.id, c.`name`, m.m_Name,m.m_Price from cuisine c,menu m
-      where
+   SELECT * from cuisine c,menu m
+
    c.id=m.m_Type  LIMIT #{start},#{rows}
  </select>
   <select id="count"  resultType="int" parameterType="com.xyh.can.util.MenuVo">

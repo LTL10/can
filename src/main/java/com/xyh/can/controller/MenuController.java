@@ -3,7 +3,10 @@ package com.xyh.can.controller;
 import com.xyh.can.entity.Menu;
 import com.xyh.can.service.MenuService;
 import com.xyh.can.util.MenuVo;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +17,9 @@ import java.util.Map;
 public class MenuController {
      @Autowired
     private MenuService menuService;
-     @RequestMapping("/menu")
+     @ApiOperation(value = "菜单和菜系的联合表的分页",notes ="根据")
+
+     @GetMapping("/menu")
 public Map<String,Object> getall(MenuVo menuVo){
     Map<String,Object> map=new HashMap<String,Object>();
     map.put("data",menuService.fingpage(menuVo));

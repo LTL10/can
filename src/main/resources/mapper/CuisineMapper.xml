@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.can.mapper.CuisineMapper">
+    <select id="Cfenye"  parameterType="com.xyh.can.util.CuisineVo" resultType="com.xyh.can.util.CuisineVo">
+   SELECT * from cuisine
+     <where>
+         <if test="name!=null and name!=''">
+             and name like '%${name}%'
+         </if>
+
+     </where>
+
+     LIMIT #{start},#{limit}
+ </select>
+ <select id="Ccount"  resultType="int" parameterType="com.xyh.can.util.CuisineVo">
+      SELECT  count(*) from cuisine
+
+  </select>
+    <update id="Cupdate">
+        update cuisine
+        <set>
+            <if test="name!=null and name!=''"> `name` = #{name} </if>
+        </set>
+        <where>
+            <if test="id!=null and id!=''">
+                `id` =#{id};
+            </if>
+        </where>
+    </update>
+
+
+    <insert id="Cadd" parameterType="com.xyh.can.entity.Cuisine">
+        insert  into cuisine(name)values
+        (#{name})
+    </insert>
+
+
+
+</mapper>

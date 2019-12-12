@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.can.mapper.MenuXiangQingVoMapper">
+
+    <select id="MenuXiangQingVo_Page" resultType="com.xyh.can.vo.MenuXiangQingVo" parameterType="com.xyh.can.vo.MenuXiangQingVo">
+        SELECT
+            m_Name,m_Price
+            FROM
+            diancan AS `as d`
+            INNER JOIN menu AS `as m` ON `as d`.d_Menu = `as m`.m_Id
+            WHERE
+            `as d`.d_OrderId = #{o_Id}
+            limit #{start},#{limit}
+    </select>
+    <select id="MenuXiangQingVo_Count" parameterType="com.xyh.can.vo.MenuXiangQingVo" resultType="Integer">
+        SELECT
+            count(*)
+            FROM
+            diancan AS `as d`
+            INNER JOIN menu AS `as m` ON `as d`.d_Menu = `as m`.m_Id
+            WHERE
+            `as d`.d_OrderId = #{o_Id}
+    </select>
+
+</mapper>

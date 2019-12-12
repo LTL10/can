@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyh.can.mapper.Consumption_PageVoMapper">
+    <resultMap id="pagevomap" type="com.xyh.can.vo.Consumption_PageVo">
+        <result column="con_Id" property="con_Id" ></result>
+        <result column="o_Id" property="o_Id" ></result>
+        <result column="zong" property="sumPrice" javaType="Double"></result>
+        <result column="o_CreateTime" property="o_CreateTime" ></result>
+        <result column="o_CanZhuo" property="o_CanZhuo" ></result>
+        <result column="o_UserId" property="o_UserId" ></result>
+    </resultMap>
+    <select id="consumption_PageVo" resultMap="pagevomap"
+            parameterType="com.xyh.can.vo.Consumption_PageVo">
+        SELECT
+         c.con_Id,o.o_Id,zong,o.o_CreateTime,o.o_CanZhuo,o.o_UserId
+        FROM
+        (SELECT
+               Sum(m.m_Price) as zong,c.con_Id,c.con_OrderId
+               FROM
+               menu AS m
+               INNER JOIN diancan AS d ON m.m_Id = d.d_Menu
+               INNER JOIN consumption AS c ON c.con_OrderId = d.d_OrderId
+               GROUP BY c.con_OrderId ) as c
+        INNER JOIN `order` as o ON o.o_Id = c.con_OrderId
+        limit #{start},#{limit}
+    </select>
+    <select id="consumption_PageVoCount" parameterType="com.xyh.can.vo.Consumption_PageVo" resultType="Integer">
+         SELECT
+        count(*)
+        FROM
+        (SELECT
+               Sum(m.m_Price),c.con_Id,c.con_OrderId
+               FROM
+               menu AS m
+               INNER JOIN diancan AS d ON m.m_Id = d.d_Menu
+               INNER JOIN consumption AS c ON c.con_OrderId = d.d_OrderId
+               GROUP BY c.con_OrderId ) as c
+        INNER JOIN `order` as o ON o.o_Id = c.con_OrderId
+    </select>
+
+</mapper>

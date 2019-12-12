@@ -25,8 +25,8 @@ public class canZhuoController {
     public Map<String,Object> canZhuoPage(CanZhuoVo canZhuoVo){
         Map<String,Object> mapp=new HashMap<String,Object>();
         mapp.put("data",canZhuoService.CanZhuoPage(canZhuoVo));
-        mapp.put("code",200);
-        mapp.put("msg","成功");
+        mapp.put("code",0);
+        mapp.put("msg","");
         mapp.put("count",canZhuoService.CanZhuoCount(canZhuoVo));
         return mapp;
     }

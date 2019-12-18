@@ -65,4 +65,49 @@ public class UserController {
         }
         return  false;
     }
+    @ApiOperation( value = "用户变更角色",notes = "根据用户Id变更用户角色")
+    @PostMapping("/updateUserRoles")
+    public boolean updateUserRoles(Integer u_Id,Integer r_Id){
+        int num= userService.updateUserRoles(u_Id,r_Id);
+        if (num>0){
+            return true;
+        }
+        return  false;
+    }
+    @ApiOperation( value = "用户重置密码",notes = "根据用户Id重置用户密码")
+    @PostMapping("/czmima")
+    public boolean czmima(Integer u_Id){
+        int num= userService.czmima(u_Id);
+        if (num>0){
+            return true;
+        }
+        return  false;
+    }
+    @ApiOperation( value = "用户锁定",notes = "根据用户Id锁定用户")
+    @PostMapping("/suoding")
+    public boolean suoding(Integer u_Id){
+        int num= userService.suoding(u_Id);
+        if (num>0){
+            return true;
+        }
+        return  false;
+    }
+    @ApiOperation( value = "用户解锁",notes = "根据用户Id解锁用户")
+    @PostMapping("/jiesuo")
+    public boolean jiesuo(Integer u_Id){
+        int num= userService.jiesuo(u_Id);
+        if (num>0){
+            return true;
+        }
+        return  false;
+    }
+    @ApiOperation( value = "批量删除用户",notes = "根据多个用户Id删除用户")
+    @PostMapping("/delUserAll")
+    public boolean delUserAll(String uid){
+        int num= userService.delUserAll(uid);
+        if (num>0){
+            return true;
+        }
+        return  false;
+    }
 }

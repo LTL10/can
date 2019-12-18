@@ -86,4 +86,19 @@
     <insert id="addUserRoles" parameterType="Integer" >
         insert into userroles (userId,rolesId) values (#{u_Id},#{r_Id})
     </insert>
+ <update id="updateUserRoles" parameterType="Integer">
+   UPDATE `dingdan`.`userroles` SET  `rolesId` = #{r_Id} WHERE `userId` = #{u_Id}
+ </update>
+ <update id="czmima" parameterType="Integer">
+   UPDATE `dingdan`.`user` SET  `u_Password` = 'abc123' WHERE `u_Id` = #{u_Id}
+ </update>
+ <update id="suoding" parameterType="Integer">
+   UPDATE `dingdan`.`user` SET  `u_IsLockout` = '是' , u_LockTime= now() WHERE `u_Id` = #{u_Id}
+ </update>
+ <update id="jiesuo" parameterType="Integer">
+   UPDATE `dingdan`.`user` SET  `u_IsLockout` = '否',u_LockTime= NULL WHERE `u_Id` = #{u_Id}
+ </update>
+    <delete id="delUserAll" parameterType="String">
+        delete from user where u_Id in (${value})
+    </delete>
 </mapper>

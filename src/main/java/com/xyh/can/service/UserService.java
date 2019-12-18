@@ -12,4 +12,9 @@ public interface UserService {
     public Integer updateUSer(User user);//修改用户
     public Integer delUser(Integer u_id);//删除用户
     public Integer addUserRoles(Integer u_Id,Integer r_Id);//用户赋予角色
+    public Integer updateUserRoles(Integer u_Id,Integer r_Id);//用户变更角色
+    public Integer czmima(Integer u_Id);//重置密码
+    public Integer suoding(Integer u_Id);//锁定用户
+    public Integer jiesuo(Integer u_Id);//解锁用户
+    public Integer delUserAll(String uid);//批量删除用户
 }

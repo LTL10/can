@@ -40,4 +40,29 @@ public class UserServiceImpl implements UserService {
     public Integer addUserRoles(Integer u_Id, Integer r_Id) {
         return userMapper.addUserRoles(u_Id,r_Id);
     }
+
+    @Override
+    public Integer updateUserRoles(Integer u_Id, Integer r_Id) {
+        return userMapper.updateUserRoles(u_Id,r_Id);
+    }
+
+    @Override
+    public Integer czmima(Integer u_Id) {
+        return userMapper.czmima(u_Id);
+    }
+
+    @Override
+    public Integer suoding(Integer u_Id) {
+        return userMapper.suoding(u_Id);
+    }
+
+    @Override
+    public Integer jiesuo(Integer u_Id) {
+        return userMapper.jiesuo(u_Id);
+    }
+
+    @Override
+    public Integer delUserAll(String uid) {
+        return userMapper.delUserAll(uid);
+    }
 }

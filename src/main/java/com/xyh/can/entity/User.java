@@ -16,4 +16,100 @@ public class User {
     private String u_ProtectEMail;// Varchar(20) 密保邮箱 N
     private String u_ProtectMTel;//Varchar(11) 密保手机 N
     private UserRoles userRoles;
+
+    public Integer getU_Id() {
+        return u_Id;
+    }
+
+    public void setU_Id(Integer u_Id) {
+        this.u_Id = u_Id;
+    }
+
+    public String getU_Name() {
+        return u_Name;
+    }
+
+    public void setU_Name(String u_Name) {
+        this.u_Name = u_Name;
+    }
+
+    public String getU_Password() {
+        return u_Password;
+    }
+
+    public void setU_Password(String u_Password) {
+        this.u_Password = u_Password;
+    }
+
+    public String getU_Zsname() {
+        return u_Zsname;
+    }
+
+    public void setU_Zsname(String u_Zsname) {
+        this.u_Zsname = u_Zsname;
+    }
+
+    public String getU_IsLockout() {
+        return u_IsLockout;
+    }
+
+    public void setU_IsLockout(String u_IsLockout) {
+        this.u_IsLockout = u_IsLockout;
+    }
+
+    public String getU_LastLoginTime() {
+        return u_LastLoginTime;
+    }
+
+    public void setU_LastLoginTime(String u_LastLoginTime) {
+        this.u_LastLoginTime = u_LastLoginTime;
+    }
+
+    public String getU_CreateTime() {
+        return u_CreateTime;
+    }
+
+    public void setU_CreateTime(String u_CreateTime) {
+        this.u_CreateTime = u_CreateTime;
+    }
+
+    public Integer getU_PsdWrong() {
+        return u_PsdWrong;
+    }
+
+    public void setU_PsdWrong(Integer u_PsdWrong) {
+        this.u_PsdWrong = u_PsdWrong;
+    }
+
+    public String getU_LockTime() {
+        return u_LockTime;
+    }
+
+    public void setU_LockTime(String u_LockTime) {
+        this.u_LockTime = u_LockTime;
+    }
+
+    public String getU_ProtectEMail() {
+        return u_ProtectEMail;
+    }
+
+    public void setU_ProtectEMail(String u_ProtectEMail) {
+        this.u_ProtectEMail = u_ProtectEMail;
+    }
+
+    public String getU_ProtectMTel() {
+        return u_ProtectMTel;
+    }
+
+    public void setU_ProtectMTel(String u_ProtectMTel) {
+        this.u_ProtectMTel = u_ProtectMTel;
+    }
+
+    public UserRoles getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(UserRoles userRoles) {
+        this.userRoles = userRoles;
+    }
 }

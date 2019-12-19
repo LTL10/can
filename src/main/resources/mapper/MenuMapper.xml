@@ -3,15 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xyh.can.mapper.MenuMapper">
- <select id="fingpage"  parameterType="com.xyh.can.util.MenuVo" resultType="com.xyh.can.util.MenuVo" >
-   SELECT * from cuisine c,menu m where
 
-   c.id=m.m_Type  LIMIT #{start},#{limit}
+
+ <select id="fingpage"  parameterType="com.xyh.can.util.MenuVo" resultType="com.xyh.can.util.MenuVo" >
+   SELECT * from cuisine c inner join menu m  on  c.id=m.m_Type 
+    <where>
+     <if test="m_Name!=null and m_Name!=''">m_Name like '%${m_Name}%'</if>
+     <if test="m_Type!=null and m_Type!=''">m_Type=#{m_Type}</if>
+    </where>
+     LIMIT #{start},#{limit}
  </select>
   <select id="count"  resultType="int" parameterType="com.xyh.can.util.MenuVo">
-      SELECT  count(*) from cuisine c,menu m
-    where
-      c.id=m.m_Type
+      SELECT  count(*) from cuisine c inner join menu m  on  c.id=m.m_Type
+      <where>
+          <if test="m_Name!=null and m_Name!=''">m_Name like '%${m_Name}%'</if>
+          <if test="m_Type!=null and m_Type!=''">m_Type=#{m_Type}</if>
+      </where>
   </select>
     <update id="update">
            update menu
@@ -48,11 +55,18 @@
 
     </delete>
     <insert id="add" parameterType="com.xyh.can.entity.Menu">
-        insert  into menu(m_Type,m_Name,m_Photo,m_Price,m_Note)values
+        insert  into menu (m_Type,m_Name,m_Photo,m_Price,m_Note) values
         (#{m_Type},#{m_Name},#{m_Photo},#{m_Price},#{m_Note})
     </insert>
-
-
+    <insert id="addMenu"  parameterType="com.xyh.can.entity.Menu">
+       INSERT INTO `dingdan`.`menu`( `m_Type`, `m_Name`, `m_Photo`, `m_Price`, `m_Note`) VALUES (#{m_Type},#{m_Name},#{m_Photo},#{m_Price},#{m_Note})
+    </insert>
+<delete id="deteleMenu" parameterType="Integer">
+    delete from menu where m_Id=#{id}
+</delete>
+<update id="updateMenu" parameterType="com.xyh.can.entity.Menu">
+    UPDATE `dingdan`.`menu` SET `m_Type` = #{m_Type}, `m_Name` = #{m_Name}, `m_Photo` = #{m_Photo}, `m_Price` = #{m_Price}, `m_Note` = #{m_Note}  WHERE `m_Id` = #{m_Id}
+</update>
  <!--<resultMap id="shop" type="com.xyh.can.entity.Menu">
     <id column="m_Id" property="m_Id" />
     <result column="m_Name" property="m_Name"/>

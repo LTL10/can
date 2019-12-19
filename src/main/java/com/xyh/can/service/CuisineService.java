@@ -10,4 +10,6 @@ public interface CuisineService {
     public int Cadd(Cuisine cuisine);//菜系添加
     public int Cupdate(Cuisine cuisine);//菜系修改
     public  int Ccount(); //菜系表条数
+    public Integer delC(Integer id);//删除菜系
+    public List<Cuisine> cxAll();//获取全部菜系
 }

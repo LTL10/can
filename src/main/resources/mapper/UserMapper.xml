@@ -101,4 +101,8 @@
     <delete id="delUserAll" parameterType="String">
         delete from user where u_Id in (${value})
     </delete>
+    <select id="findUserName" parameterType="String" resultType="com.xyh.can.entity.User">
+        select * from user where u_Name=#{user_name}
+    </select>
+
 </mapper>

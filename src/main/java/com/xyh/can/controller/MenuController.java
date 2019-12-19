@@ -16,16 +16,24 @@ public class MenuController {
      @Autowired
     private MenuService menuService;
      @ApiOperation(value = "菜单和菜系的联合表的分页",notes ="根据")
-
      @PostMapping("/menu")
 public Map<String,Object> getall(MenuVo menuVo){
     Map<String,Object> map=new HashMap<String,Object>();
-    map.put("data",menuService.fingpage(menuVo));
     map.put("code",0);
     map.put("msg","");
-    map.put("count",menuService.count());
+    map.put("data",menuService.fingpage(menuVo));
+    map.put("count",menuService.count(menuVo));
     return  map;
  }
+    @ApiOperation( value = "添加菜",notes = "根据菜Menu添加菜")
+    @PostMapping("/addMenu")
+    public boolean addMenu(Menu menu){
+        int num= menuService.addMenu(menu);
+        if (num>0){
+            return true;
+        }
+        return  false;
+    }
  @PostMapping("/update")
  public  boolean update(Menu menu){
          int num=menuService.update(menu);
@@ -34,14 +42,22 @@ public Map<String,Object> getall(MenuVo menuVo){
          }
          return false;
  }
-@PostMapping("/detele")
-    public  boolean delete(int id){
-         int num=menuService.delete(id);
+@PostMapping("/deteleMenu")
+    public  boolean deteleMenu(Integer id){
+         int num=menuService.deteleMenu(id);
     if(num>0){
         return  true;
     }
     return false;
 }
+    @PostMapping("/updateMenu")
+    public  boolean updateMenu(Menu menu){
+        int num=menuService.updateMenu(menu);
+        if(num>0){
+            return  true;
+        }
+        return false;
+    }
 @PostMapping("/insert")
 public  boolean insert(Menu menu){
          int num=menuService.add(menu);

@@ -16,9 +16,14 @@
  </select>
  <select id="Ccount"  resultType="int" parameterType="com.xyh.can.util.CuisineVo">
       SELECT  count(*) from cuisine
+     <where>
+         <if test="name!=null and name!=''">
+             and name like '%${name}%'
+         </if>
 
+     </where>
   </select>
-    <update id="Cupdate">
+    <update id="Cupdate" parameterType="com.xyh.can.entity.Cuisine">
         update cuisine
         <set>
             <if test="name!=null and name!=''"> `name` = #{name} </if>
@@ -36,6 +41,10 @@
         (#{name})
     </insert>
 
-
-
+<delete id="delC" parameterType="Integer">
+    delete from cuisine where id=#{id}
+</delete>
+<select id="cxAll"  resultType="com.xyh.can.entity.Cuisine">
+   SELECT cuisine.id,cuisine.name from cuisine
+</select>
 </mapper>

@@ -31,4 +31,14 @@ public class CuisineServiceimpl implements CuisineService {
     public int Ccount() {
         return cuisineMapper.Ccount();
     }
+
+    @Override
+    public Integer delC(Integer id) {
+        return cuisineMapper.delC(id);
+    }
+
+    @Override
+    public List<Cuisine> cxAll() {
+        return cuisineMapper.cxAll();
+    }
 }

@@ -1,5 +1,6 @@
 package com.xyh.can.service;
 
+import com.xyh.can.entity.LoginUser;
 import com.xyh.can.entity.User;
 import com.xyh.can.vo.UserVo;
 
@@ -17,4 +18,8 @@ public interface UserService {
     public Integer suoding(Integer u_Id);//锁定用户
     public Integer jiesuo(Integer u_Id);//解锁用户
     public Integer delUserAll(String uid);//批量删除用户
+    public User findUserName(String user_name);  //通过用户名查找
+    LoginUser login(User user); //用户登录
+
+
 }

@@ -21,8 +21,23 @@ public class MenuServiceimp implements MenuService {
     }
 
     @Override
-    public int count() {
-        return menuMapper.count();
+    public Integer addMenu(Menu menu) {
+        return menuMapper.addMenu(menu);
+    }
+
+    @Override
+    public Integer deteleMenu(Integer id) {
+        return menuMapper.deteleMenu(id);
+    }
+
+    @Override
+    public Integer updateMenu(Menu menu) {
+        return menuMapper.updateMenu(menu);
+    }
+
+    @Override
+    public int count(MenuVo menuVo) {
+        return menuMapper.count(menuVo);
     }
 
     @Override

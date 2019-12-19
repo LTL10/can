@@ -6,6 +6,7 @@ public class MenuVo extends Menu {
     private int page = 1;
     private int limit = 10;
     private int start;
+    private int id;
     private double min;
     private  double max;
     private String name;
@@ -48,6 +49,14 @@ public class MenuVo extends Menu {
 
     public void setLimit(int limit) {
         this.limit = limit;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

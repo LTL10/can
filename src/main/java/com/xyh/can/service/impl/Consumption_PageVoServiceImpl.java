@@ -20,4 +20,9 @@ public class Consumption_PageVoServiceImpl implements Consumption_PageVoService 
     public Integer consumption_PageVoCount(Consumption_PageVo consumption_pageVo) {
         return consumption_pageVoMapper.consumption_PageVoCount(consumption_pageVo);
     }
+
+    @Override
+    public List<Consumption_PageVo> eacharts() {
+        return consumption_pageVoMapper.eacharts();
+    }
 }

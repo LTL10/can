@@ -1,5 +1,6 @@
 package com.xyh.can.mapper;
 
+import com.xyh.can.entity.Canche;
 import com.xyh.can.entity.DianCan;
 import com.xyh.can.entity.Order;
 import com.xyh.can.entity.dingdanvo;
@@ -21,4 +22,9 @@ public interface dingdanmapper {
     List<Map> getweishangcai(dingdanvo v);
     int getweishangcaicount(dingdanvo v);
     int deldingdan(DianCan d);
+    List<Map> getcanche(Canche c);//餐车查询
+    int updatecanchenum(Canche c);
+    int delcanche(Canche c);
+    int addcanche(Canche c);
+    Map calldingdan(Order o);
 }

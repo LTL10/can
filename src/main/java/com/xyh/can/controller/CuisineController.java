@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RestController
 @Api(value = "菜系表",tags = "菜系表")
-//@RequiresAuthentication
+
 public class CuisineController {
 @Autowired
     private CuisineService cuisineService;
@@ -64,4 +64,10 @@ public class CuisineController {
           System.out.println(cuisineService.cxAll().toString());
         return  cuisineService.cxAll();
     }
+    @PostMapping("/Cfenyelist")
+    public List tionPagelist(CuisineVo cuisineVo){
+
+        return cuisineService.Cfenye(cuisineVo);
+    }
+
 }

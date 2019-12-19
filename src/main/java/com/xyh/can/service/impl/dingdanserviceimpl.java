@@ -1,5 +1,6 @@
 package com.xyh.can.service.impl;
 
+import com.xyh.can.entity.Canche;
 import com.xyh.can.entity.DianCan;
 import com.xyh.can.entity.Order;
 import com.xyh.can.entity.dingdanvo;
@@ -76,6 +77,30 @@ public class dingdanserviceimpl implements dingdanservice {
     public int deldingdan(DianCan d) {
         return dingdanmapper.deldingdan(d);
     }
+    public List<Map> getcanche(Canche c) {
+        return dingdanmapper.getcanche(c);
+    }
 
+    @Override
+    public int updatecanchenum(Canche c) {
+        return  dingdanmapper.updatecanchenum(c);
+
+
+    }
+
+    @Override
+    public int delcanche(Canche c) {
+        return dingdanmapper.delcanche(c);
+    }
+
+    @Override
+    public int addcanche(Canche c) {
+        return dingdanmapper.addcanche(c);
+    }
+
+    @Override
+    public Map calldingdan(Order o) {
+        return dingdanmapper.calldingdan(o);
+    }
 
 }

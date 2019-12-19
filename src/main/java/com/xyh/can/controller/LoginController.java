@@ -25,7 +25,7 @@ public class LoginController {
     @RequestMapping("/submitLogin")
     @ResponseBody
     public Map<String, Object> submitLogin(User user, HttpServletResponse httpServletResponse)  {
-        System.out.println("我进来了");
+
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         //先执行登录验证的过滤操作,才会执行后面这些乱七八糟的异常
         //throw new MyException("测试自定义异常!");

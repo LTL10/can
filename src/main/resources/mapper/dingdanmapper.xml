@@ -192,5 +192,30 @@ DELETE FROM diancan WHERE d_Id=#{d_Id}
 
 
     </delete>
+    <select id="getcanche" resultType="java.util.Map" parameterType="com.xyh.can.entity.Canche">
+        SELECT m.m_Name,m.m_Price,m.m_Id,c.cc_Num,c.cc_Sum,c.cc_Id FROM canche c,Menu m WHERE c.cc_MenuId=m.m_Id
+        <if test="cc_CanZhuoId !=null and cc_CanZhuoId !=''">
+            and  c.cc_CanZhuoId=#{cc_CanZhuoId}
+        </if>
+    </select>
+    <update id="updatecanchenum" parameterType="com.xyh.can.entity.Canche">
+        UPDATE canche  <set><if test="cc_Num!=null and cc_Num!=''">
+        cc_Num=#{cc_Num},
+    </if>
+        <if test="cc_Sum!=null and cc_Sum!=''">
+            cc_Sum=#{cc_Sum}
+        </if></set>
+        WHERE cc_Id=#{cc_Id}
+    </update>
+    <delete id="delcanche" parameterType="com.xyh.can.entity.Canche">
+         DELETE FROM canche WHERE cc_Id=#{cc_Id}
+    </delete>
+    <insert id="addcanche" parameterType="com.xyh.can.entity.Canche">
 
+        INSERT INTO canche (cc_MenuId,cc_Num,cc_CanZhuoId,cc_Sum) VALUES (#{cc_MenuId},#{cc_Num},#{cc_CanZhuoId},#{cc_Sum})
+    </insert>
+    <select id="calldingdan" parameterType="com.xyh.can.entity.Order" resultType="java.util.Map">
+
+        CALL orderdindan(#{o_CanZhuo},#{o_UserId},#{d_Menu},@fan)
+    </select>
 </mapper>

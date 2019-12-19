@@ -90,7 +90,7 @@
    UPDATE `dingdan`.`userroles` SET  `rolesId` = #{r_Id} WHERE `userId` = #{u_Id}
  </update>
  <update id="czmima" parameterType="Integer">
-   UPDATE `dingdan`.`user` SET  `u_Password` = 'abc123' WHERE `u_Id` = #{u_Id}
+   UPDATE `dingdan`.`user` SET  `u_Password` = '852f74c1590e976b05653a8ce5c65b55920240160c770589' WHERE `u_Id` = #{u_Id}
  </update>
  <update id="suoding" parameterType="Integer">
    UPDATE `dingdan`.`user` SET  `u_IsLockout` = '是' , u_LockTime= now() WHERE `u_Id` = #{u_Id}

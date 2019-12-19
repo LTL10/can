@@ -4,14 +4,17 @@ import com.xyh.can.entity.Menu;
 import com.xyh.can.service.MenuService;
 import com.xyh.can.util.MenuVo;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
+
 public class MenuController {
      @Autowired
     private MenuService menuService;
@@ -75,4 +78,11 @@ public boolean deteleone(int tid){
     }
     return false;
 }
+    @PostMapping("/menuz")
+    public List getalla(MenuVo menuVo){
+
+        System.out.println(menuVo);
+        System.out.println(menuService.fingpage(menuVo));
+        return  menuService.fingpage(menuVo);
+    }
 }

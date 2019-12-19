@@ -5,6 +5,7 @@ import com.xyh.can.service.ModulesService;
 import com.xyh.can.vo.ModulesVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import java.util.Map;
 
 @RestController
 @Api( value = "模块类",tags = "模块应用接口")
+
 public class ModulesController {
     @Autowired
     ModulesService modulesService;

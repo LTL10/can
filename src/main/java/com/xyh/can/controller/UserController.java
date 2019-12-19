@@ -4,6 +4,7 @@ import com.xyh.can.service.UserService;
 import com.xyh.can.vo.UserVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import java.util.Map;
 @RestController
 @Api( value = "用户类",tags = "用户应用接口")
 @CrossOrigin
+
 public class UserController {
     @Autowired
     UserService userService;

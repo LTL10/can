@@ -39,5 +39,17 @@
                GROUP BY c.con_OrderId ) as c
         INNER JOIN `order` as o ON o.o_Id = c.con_OrderId
     </select>
-
+    <select id="eacharts" resultMap="pagevomap">
+        SELECT
+        c.con_Id,o.o_Id,zong,o.o_CreateTime,o.o_CanZhuo,o.o_UserId
+        FROM
+        (SELECT
+        Sum(m.m_Price) as zong,c.con_Id,c.con_OrderId
+        FROM
+        menu AS m
+        INNER JOIN diancan AS d ON m.m_Id = d.d_Menu
+        INNER JOIN consumption AS c ON c.con_OrderId = d.d_OrderId
+        GROUP BY c.con_OrderId ) as c
+        INNER JOIN `order` as o ON o.o_Id = c.con_OrderId
+    </select>
 </mapper>

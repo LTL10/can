@@ -1,20 +1,25 @@
 package com.xyh.can.controller;
 
+import com.xyh.can.entity.Canche;
 import com.xyh.can.entity.DianCan;
 import com.xyh.can.entity.Order;
 import com.xyh.can.entity.dingdanvo;
 import com.xyh.can.service.dingdanservice;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Api(value = "顾客订单",tags = "订单")
 @RestController
+
 public class dingdancontroller {
     @Autowired
     private dingdanservice dingdanservice;
@@ -103,5 +108,54 @@ public class dingdancontroller {
         }else{
             return "加菜失败";
         }
+    }
+
+    @PostMapping("/calldingdan")
+    public  Map<String,Object> calldingdan(Order o){
+        Map<String, Object> m=new HashMap<String, Object>();
+
+        System.out.println(dingdanservice.calldingdan(o));
+        return dingdanservice.calldingdan(o);
+
+    }
+    @PostMapping("/getcanche")
+    public List getcanche(Canche c){
+
+        return dingdanservice.getcanche(c);
+    } @ApiOperation(value = "修改菜的数量",notes = "修改菜的数量")
+    @GetMapping("/updatecanchenum")
+    public int updatecanchenum(Canche c){
+        System.out.println(c);
+        return dingdanservice.updatecanchenum(c);
+//        System.out.println(i);
+//        if(i>0){
+//            return "修改成功";
+//        }else{
+//            return "修改失败";
+//        }
+    }
+    @ApiOperation(value = "加入餐车",notes = "加入餐车")
+    @GetMapping("/addcanche")
+    public int addcanche(Canche c){
+        System.out.println(c);
+        return dingdanservice.addcanche(c);
+//        System.out.println(i);
+//        if(i>0){
+//            return "修改成功";
+//        }else{
+//            return "修改失败";
+//        }
+    }
+    @ApiOperation(value = "删除餐车",notes = "删除餐车")
+    @PostMapping("/delcanche")
+    public int delcanche(Canche c){
+        System.out.println(c);
+        return dingdanservice.delcanche(c);
+//        System.out.println(i);
+//        if(i>0){
+//            return "修改成功";
+//        }else{
+//            return "修改失败";
+//        }
     }
 }

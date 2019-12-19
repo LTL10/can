@@ -51,9 +51,9 @@ public class MD5Untils {
         return md5Hex(password + salt).equals(new String(cs1));
     }
         public static void main(String[] args) {
-            String ss = MD5Untils.generate("1234536");
-            System.out.println(MD5Untils.generate("123456"));
-            System.out.println("是否是同一字符串："+MD5Untils.verify("34536","59274d22398ad5864196cc77655f3b89442ad5841e792245"));
+            String ss = MD5Untils.generate("abc123");
+            System.out.println(MD5Untils.generate("abc123"));
+            System.out.println("是否是同一字符串："+MD5Untils.verify("abc123","852f74c1590e976b05653a8ce5c65b55920240160c770589"));
         }
 
 }
